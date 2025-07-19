@@ -1,0 +1,52 @@
+ :root {
+            --primary-color: 'theme_color';
+            --secondary-color: 'theme_color';
+
+            --btn-primary-border-radius: 0.25rem;
+            --btn-primary-color: #fff;
+            --btn-primary-background-color: 'theme_color';
+            --btn-primary-border-color: 'theme_color';
+            --btn-primary-hover-color: #fff;
+            --btn-primary-background-hover-color: 'theme_color';
+            --btn-primary-border-hover-color: 'theme_color';
+            --btn-primary-font-weight: 500;
+
+            --btn-secondary-border-radius: 0.25rem;
+            --btn-secondary-color: 'theme_color';
+            --btn-secondary-background-color: transparent;
+            --btn-secondary-border-color: 'theme_color';
+            --btn-secondary-hover-color: #fff;
+            --btn-secondary-background-hover-color: 'theme_color';
+            --btn-secondary-border-hover-color: 'theme_color';
+
+            --heading-color: #000;
+            --heading-font-family: 'Poppins', sans-serif;
+            --heading-font-weight: 700;
+
+            --title-color: #000;
+            --title-font-family: 'Poppins', sans-serif;
+            --title-font-weight: 400;
+
+            --body-color: #000;
+            --body-background-color: #fff;
+            --body-font-family: 'Poppins', sans-serif;
+            --body-font-size: 14px;
+            --body-font-weight: 400;
+
+            --section-heading-color: #000;
+            --section-heading-font-family: 'Poppins', sans-serif;
+            --section-heading-font-size: 48px;
+            --section-heading-font-weight: 600;
+
+            --section-subheading-color: #000;
+            --section-subheading-font-family: 'Poppins', sans-serif;
+            --section-subheading-font-size: 18px;
+            --section-subheading-font-weight: 400;
+        }
+
+        .bg-3 {
+            background-color: 'theme_color'
+        }
+        .search-form button {
+            background: 'theme_color';
+        }

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
+    <style>
+        .w-50 {width: 50%;}
+        .w-100-p {width: 100% !important;}
+        .w-30-p {width: 30% !important;}
+        .w-40-p {width: 40% !important;}
+        .w-60-p {width: 60% !important;}
+        .w-70-p {width: 70% !important;}
+        .w-100 {width: 100px !important;}
+        .mb_0 {margin-bottom: 0;}
+        .table-border-0,
+        .table-border-0 tr,
+        .table-border-0 tr th,
+        .table-border-0 tr td {
+            border: none!important;
+        }
+        .tar {text-align: right;}
+
+        .invoice-container {
+            border: 1px solid #d5d5d5;
+            border-radius: 10px;
+            padding: 25px;
+        }
+
+        .invoice-top-right {
+            text-align: right;
+        }
+        .invoice-top-right h4 {
+            font-size: 26px;
+            text-transform: uppercase;
+        }
+        .invoice-top-right h5 {
+            font-size: 16px;
+            color: #757575;
+        }
+
+        .invoice-middle {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .invoice-middle-left p,
+        .invoice-middle-right p {
+            color: #757575;
+            font-size: 16px;
+        }
+        .invoice-middle-left h4,
+        .invoice-middle-right h4 {
+            font-size: 20px;
+        }
+        .invoice-middle-right {
+            text-align: right!important;
+        }
+
+        .invoice-item-table,
+        .invoice-item-table tr td,
+        .invoice-item-table tr th {
+            border-color: #b9b9b9;
+        }
+
+
+        .invoice-bottom {
+            margin-top: 40px;
+        }
+        .invoice-bottom-payment h4 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .invoice-bottom-total-box p {
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+        .invoice-bottom-total-box span {
+            width: 70px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invoice-container" id="print_invoice">
+        <div class="invoice-top">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-border-0">
+                            <tbody>
+                                <tr>
+                                    <td class="w-50">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="" class="w-100">
+                                    </td>
+                                    <td class="w-50">
+                                        <div class="invoice-top-right">
+                                            <h4>Invoice</h4>
+                                            <h5>Order No: 12345</h5>
+                                            <h5>Date: 2025-04-10</h5>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="invoice-middle">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-border-0">
+                            <tbody>
+                                <tr>
+                                    <td class="w-50">
+                                        <div class="invoice-middle-left">
+                                            <h4>Invoice To:</h4>
+                                            <p class="mb_0">Smith</p>
+                                            <p class="mb_0">smith@gmail.com</p>
+                                            <p class="mb_0">123-333-2233</p>
+                                            <p class="mb_0">45 BN Street</p>
+                                            <p class="mb_0">NYC, CA, 12033</p>
+                                        </div>
+                                    </td>
+                                    <td class="w-50">
+                                        <div class="invoice-middle-right">
+                                            <h4>Invoice From:</h4>
+                                            <p class="mb_0">Website</p>
+                                            <p class="mb_0 color_6d6d6d">admin@gmail.com</p>
+                                            <p class="mb_0">215-899-5780</p>
+                                            <p class="mb_0">3145 Glen Falls Road</p>
+                                            <p class="mb_0">Bensalem, PA 19020</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="invoice-item">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered invoice-item-table">
+                            <tbody>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Course</th>
+                                    <th>Price</th>
+                                    <th>Coupon Name</th>
+                                    <th>Discount</th>
+                                    <th>Final Price</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Laravel Course</td>
+                                    <td>$29</td>
+                                    <td>HGNAME00</td>
+                                    <td>$10</td>
+                                    <td>$19</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="invoice-bottom">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-border-0">
+                            <tbody>
+                                <td class="w-70 invoice-bottom-payment">
+                                    <h4>Payment Method</h4>
+                                    <p>PayPal</p>
+                                </td>
+                                <td class="w-30 tar invoice-bottom-total-box">
+                                    <h4>Total</h4>
+                                    <p>$19</p>
+                                </td>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="print-button mt_25">
+        <a onclick="printInvoice()" href="javascript:;" class="btn btn-primary"><i class="fas fa-print"></i> Print</a>
+    </div>
+    <script>
+        function printInvoice() {
+            let body = document.body.innerHTML;
+            let data = document.getElementById('print_invoice').innerHTML;
+            document.body.innerHTML = data;
+            window.print();
+            document.body.innerHTML = body;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

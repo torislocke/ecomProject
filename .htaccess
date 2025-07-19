@@ -1,0 +1,31 @@
+RewriteEngine On
+
+RewriteRule  ^contact$                 contact.php                 [L]
+RewriteRule  ^tracking$                tracking.php                [L]
+RewriteRule  ^about-us$                about-us.php                [L]
+RewriteRule  ^faq$                     faq.php                     [L]
+RewriteRule  ^blog$                    blog.php                    [L]
+RewriteRule  ^cart$                    cart.php                    [L]
+RewriteRule  ^checkout$                checkout.php                [L]
+RewriteRule  ^login$                   login.php                   [L]
+RewriteRule  ^register$                register.php                [L]
+RewriteRule  ^forget-password$         forget-password.php         [L]
+RewriteRule  ^terms$                   terms.php                   [L]
+RewriteRule  ^privacy$                 privacy.php                 [L]
+
+
+RewriteRule  ^customer/dashboard$      customer-dashboard.php      [L]
+RewriteRule  ^customer/order$          customer-order.php          [L]
+RewriteRule  ^customer/wishlist$       customer-wishlist.php       [L]
+RewriteRule  ^customer/profile$        customer-profile.php        [L]
+
+
+RewriteRule  ^post/(.*)$/?$            post.php?slug=$1            [L]
+RewriteRule  ^product/(.*)$/?$         product.php?slug=$1         [L]
+
+
+RewriteRule  ^blog/(\d+)$                  blog.php?p=$1                [L]
+RewriteRule  ^category/([^/]+)/(\d+)$      category.php?slug=$1&p=$2    [L]
+RewriteRule  ^tag/([^/]+)/(\d+)$           tag.php?name=$1&p=$2         [L]
+
+RewriteRule  ^customer/order-invoice/(.*)$/?$         customer-order-invoice.php?order_no=$1         [L]
