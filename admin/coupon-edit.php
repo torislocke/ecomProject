@@ -5,53 +5,53 @@ $statement = $pdo->prepare("SELECT * FROM coupons WHERE id=?");
 $statement->execute([$_REQUEST['id']]);
 $result = $statement->fetch(PDO::FETCH_ASSOC);
 $total = $statement->rowCount();
-if($total == 0) {
-    header('location: '.ADMIN_URL.'coupon-view.php');
+if ($total == 0) {
+    header('location: ' . ADMIN_URL . 'coupon-view.php');
     exit;
 }
 ?>
 
 <?php
-if(isset($_POST['form1'])) {
+if (isset($_POST['form1'])) {
     try {
 
-        if($_POST['code'] == '') {
+        if ($_POST['code'] == '') {
             throw new Exception('Code cannot be empty');
         }
         // duplicate code check
         $statement = $pdo->prepare("SELECT * FROM coupons WHERE code=? AND id!=?");
         $statement->execute([$_POST['code'], $_REQUEST['id']]);
         $total = $statement->rowCount();
-        if($total) {
+        if ($total) {
             throw new Exception('Code already exists');
         }
-        if($_POST['discount'] == '') {
+        if ($_POST['discount'] == '') {
             throw new Exception('Discount cannot be empty');
         }
         // Check if discount is numeric
-        if(!is_numeric($_POST['discount'])) {
+        if (!is_numeric($_POST['discount'])) {
             throw new Exception('Discount must be numeric');
         }
-        if($_POST['type'] == '') {
+        if ($_POST['type'] == '') {
             throw new Exception('Type cannot be empty');
         }
-        if($_POST['start_date'] == '') {
+        if ($_POST['start_date'] == '') {
             throw new Exception('Start date cannot be empty');
         }
-        if($_POST['end_date'] == '') {
+        if ($_POST['end_date'] == '') {
             throw new Exception('End date cannot be empty');
         }
-        if($_POST['maximum_use'] == '') {
+        if ($_POST['maximum_use'] == '') {
             throw new Exception('Maximum use cannot be empty');
         }
         // Check if maximum use is numeric
-        if(!is_numeric($_POST['maximum_use'])) {
+        if (!is_numeric($_POST['maximum_use'])) {
             throw new Exception('Maximum use must be numeric');
         }
-        if($_POST['status'] == '') {
+        if ($_POST['status'] == '') {
             throw new Exception('Status cannot be empty');
         }
-        
+
         // Update the coupon
         $statement = $pdo->prepare("UPDATE coupons SET code=?, discount=?, type=?, start_date=?, end_date=?, maximum_use=?, status=? WHERE id=?");
         $statement->execute([
@@ -66,14 +66,12 @@ if(isset($_POST['form1'])) {
         ]);
 
         $_SESSION['success_message'] = 'Coupon has been updated successfully.';
-        header('location: '.ADMIN_URL.'coupon-view.php');
+        header('location: ' . ADMIN_URL . 'coupon-view.php');
         exit;
-
-
     } catch (Exception $e) {
         $error_message = $e->getMessage();
         $_SESSION['error_message'] = $error_message;
-        header('location: '.ADMIN_URL.'coupon-edit.php?id='.$_REQUEST['id']);
+        header('location: ' . ADMIN_URL . 'coupon-edit.php?id=' . $_REQUEST['id']);
         exit;
     }
 }
@@ -116,8 +114,12 @@ $result = $statement->fetch(PDO::FETCH_ASSOC);
                                         <div class="form-group mb-3">
                                             <label>Type</label>
                                             <select name="type" class="form-select">
-                                                <option value="Fixed" <?php if($result['type'] == 'Fixed') {echo 'selected';} ?>>Fixed</option>
-                                                <option value="Percentage" <?php if($result['type'] == 'Percentage') {echo 'selected';} ?>>Percentage</option>
+                                                <option value="Fixed" <?php if ($result['type'] == 'Fixed') {
+                                                                            echo 'selected';
+                                                                        } ?>>Fixed</option>
+                                                <option value="Percentage" <?php if ($result['type'] == 'Percentage') {
+                                                                                echo 'selected';
+                                                                            } ?>>Percentage</option>
                                             </select>
                                         </div>
                                     </div>
@@ -143,8 +145,12 @@ $result = $statement->fetch(PDO::FETCH_ASSOC);
                                         <div class="form-group mb-3">
                                             <label>Status</label>
                                             <select name="status" class="form-select">
-                                                <option value="Active" <?php if($result['status'] == 'Active') {echo 'selected';} ?>>Active</option>
-                                                <option value="Inactive" <?php if($result['status'] == 'Inactive') {echo 'selected';} ?>>Inactive</option>
+                                                <option value="Active" <?php if ($result['status'] == 'Active') {
+                                                                            echo 'selected';
+                                                                        } ?>>Active</option>
+                                                <option value="Inactive" <?php if ($result['status'] == 'Inactive') {
+                                                                                echo 'selected';
+                                                                            } ?>>Inactive</option>
                                             </select>
                                         </div>
                                     </div>

@@ -227,4 +227,4 @@ if($total == 0) {
     </div>            
 </main>
 
-<?php include "footer.php"; ?>
+<?php include "footer-online.php"; ?>

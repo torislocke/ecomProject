@@ -6,7 +6,7 @@ if($_GET['email'] == '' || $_GET['token'] == '') {
     exit();
 }
 
-$statement = $pdo->prepare("SELECT * FROM customers WHERE email=? AND token=?");
+$statement = $pdo->prepare("SELECT * FROM users WHERE email=? AND token=?");
 $statement->execute([$_GET['email'], $_GET['token']]);
 $total = $statement->rowCount();
 if($total == 0) {
@@ -15,7 +15,7 @@ if($total == 0) {
 }
 
 // Update the customer's status to 'Active'
-$statement = $pdo->prepare("UPDATE customers SET status=?, token=? WHERE email=? AND token=?");
+$statement = $pdo->prepare("UPDATE users SET status=?, token=? WHERE email=? AND token=?");
 $statement->execute(['Active', '', $_GET['email'], $_GET['token']]);
 
 $_SESSION['success_message'] = "Your account has been activated successfully. You can now log in.";

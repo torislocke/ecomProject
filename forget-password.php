@@ -17,7 +17,7 @@ if(isset($_POST['form_forget_password'])) {
             throw new Exception("Email is invalid");
         }
 
-        $q = $pdo->prepare("SELECT * FROM customers WHERE email=? AND status=?");
+        $q = $pdo->prepare("SELECT * FROM users WHERE email=? AND status=?");
         $q->execute([$_POST['email'],'Active']);
         $total = $q->rowCount();
         if(!$total) {
@@ -25,7 +25,7 @@ if(isset($_POST['form_forget_password'])) {
         } 
 
         $token = bin2hex(random_bytes(12));
-        $statement = $pdo->prepare("UPDATE customers SET token=? WHERE email=?");
+        $statement = $pdo->prepare("UPDATE users SET token=? WHERE email=?");
         $statement->execute([$token,$_POST['email']]);
 
         $email_message = "Please click on the following link in order to reset the password:<br>";

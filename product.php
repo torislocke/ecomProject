@@ -427,4 +427,4 @@ if(isset($_POST['form_add_to_cart_with_quantity'])) {
      <?php endif; ?>
 </main>
 
-<?php include "footer.php"; ?>
+<?php include "footer-online.php"; ?>

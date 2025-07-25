@@ -20,7 +20,7 @@ if(isset($_POST['form_profile']))
             throw new Exception("Email is invalid");
         }
         // email check in database
-        $q = $pdo->prepare("SELECT * FROM customers WHERE email=? AND id!=?");
+        $q = $pdo->prepare("SELECT * FROM users WHERE email=? AND id!=?");
         $q->execute([$_POST['email'], $_SESSION['customer']['id']]);
         $total = $q->rowCount();
         if($total) {
@@ -36,7 +36,7 @@ if(isset($_POST['form_profile']))
         
         $customer_id = $_SESSION['customer']['id'];
         
-        $q = $pdo->prepare("UPDATE customers SET name=?, email=?, phone=?, address=? WHERE id=?");
+        $q = $pdo->prepare("UPDATE users SET name=?, email=?, phone=?, address=? WHERE id=?");
         $q->execute([$_POST['name'], $_POST['email'], $_POST['phone'], $_POST['address'], $customer_id]);
         
         if($_POST['password'] != '') {
@@ -44,7 +44,7 @@ if(isset($_POST['form_profile']))
                 throw new Exception("Password and Confirm Password do not match");
             }
             $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $q = $pdo->prepare("UPDATE customers SET password=? WHERE id=?");
+            $q = $pdo->prepare("UPDATE users SET password=? WHERE id=?");
             $q->execute([$hashed_password, $customer_id]);
         }
 
@@ -124,4 +124,4 @@ if(isset($_POST['form_profile']))
     </div>            
 </main>
 
-<?php include "footer.php"; ?>
+<?php include "footer-online.php"; ?>

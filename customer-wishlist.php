@@ -85,4 +85,4 @@ if(!isset($_SESSION['customer'])) {
     </div>
 </main>
 
-<?php include "footer.php"; ?>
+<?php include "footer-online.php"; ?>

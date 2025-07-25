@@ -199,4 +199,4 @@ if(isset($_POST['form_remove'])) {
     </div>            
 </main>
 
-<?php include "footer.php"; ?>
+<?php include "footer-online.php"; ?>

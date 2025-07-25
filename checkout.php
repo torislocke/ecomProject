@@ -26,7 +26,7 @@ if(isset($_POST['form_login'])) {
             throw new Exception("Password can not be empty");
         }
 
-        $q = $pdo->prepare("SELECT * FROM customers WHERE email=? AND status=?");
+        $q = $pdo->prepare("SELECT * FROM users WHERE email=? AND status=?");
         $q->execute([$_POST['email'],'Active']);
         $total = $q->rowCount();
         if(!$total) {
@@ -423,7 +423,7 @@ if(isset($_POST['form_order'])) {
                             <div class="row">
                                 <div class="col-md-6 mb-2">
                                     <select name="shipping_cost" id="area-select" class="form-select">
-                                        <option value="">Select Area</option>
+                                        <option value="">Select Shipping</option>
                                         <?php
                                         $statement = $pdo->prepare("SELECT * FROM areas");
                                         $statement->execute();
@@ -439,9 +439,9 @@ if(isset($_POST['form_order'])) {
                                 <div class="col-md-6 mb-2">
                                     <select name="payment_method" class="form-select" onchange="togglePaymentFields()">
                                         <option value="">Select Payment Method</option>
-                                        <option value="Cash on Delivery">Cash on Delivery</option>
+                                        <!-- <option value="Cash on Delivery">Cash on Delivery</option> -->
                                         <option value="PayPal">PayPal</option>
-                                        <option value="Stripe">Stripe</option>
+                                        <option value="Stripe">Credit Card</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12 mb-2">
@@ -598,4 +598,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<?php include "footer.php"; ?>
+<?php include "footer-online.php"; ?>

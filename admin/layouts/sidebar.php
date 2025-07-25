@@ -25,6 +25,8 @@
 
             <li class="<?php if($cur_page == 'product-category-view.php' || $cur_page == 'product-category-create.php' || $cur_page == 'product-category-edit.php') {echo 'active';} ?>"><a class="nav-link" href="<?php echo ADMIN_URL; ?>product-category-view.php"><i class="far fa-file"></i> <span>Product Category</span></a></li>
 
+            <li class="<?php if($cur_page == 'coffee-view.php' || $cur_page == 'coffee-create.php' || $cur_page == 'coffee-edit.php' || $cur_page == 'coffee-photo-gallery.php') {echo 'active';} ?>"><a class="nav-link" href="<?php echo ADMIN_URL; ?>coffee-view.php"><i class="far fa-file"></i> <span>Coffee Bulk</span></a></li>
+
             <li class="<?php if($cur_page == 'product-view.php' || $cur_page == 'product-create.php' || $cur_page == 'product-edit.php' || $cur_page == 'product-photo-gallery.php') {echo 'active';} ?>"><a class="nav-link" href="<?php echo ADMIN_URL; ?>product-view.php"><i class="far fa-file"></i> <span>Product</span></a></li>
 
             <li class="<?php if($cur_page == 'coupon-view.php' || $cur_page == 'coupon-create.php' || $cur_page == 'coupon-edit.php') {echo 'active';} ?>"><a class="nav-link" href="<?php echo ADMIN_URL; ?>coupon-view.php"><i class="far fa-file"></i> <span>Coupon</span></a></li>

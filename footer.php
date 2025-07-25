@@ -1,4 +1,48 @@
         <!-- footer start -->
+        <footer className="border-t">
+            <div className="flex-1 wrapper">
+                <div className="pt-10 m-auto grid grid-cols-1 md:grid-cols-2 md:w-screen md:gap-30 lg:grid-cols-3 max-w-[1280px] gap-10">
+                    <section className="basis-1/2 lg:basis-1/3">
+                        <h3>Cypress Coffee Company</h3>
+                        <address>
+                            Address: 22310 NE Marketplace Dr # 102, Redmond, WA 98053
+                        </address>
+                        <span>Telephone: <a href="4253055977">(425) 305-5977</a></span>
+                    </section>
+                    <section className="basis-1/2 lg:basis-1/3">
+                        <h4>Hours of Operation</h4>
+                        <ul>
+                            <li>Sunday 7AM-1PM</li>
+                            <li>Mon - Fri 6AM-4PM</li>
+                            <li>Saturday 7AM-4PM</li>
+                        </ul>
+                    </section>
+                    <section className="basis-1/2 lg:basis-1/3 pl-10">
+                        <p>
+                            <span className="pr-10">
+                                <a href="https://www.instagram.com/cypresscoffeecompany/?hl=en"
+                                    target="blank">Instagram</a>    
+                            </span>
+
+                            <a href="https://www.facebook.com/cypresscoffeecompany/"
+                                target="blank">Facebook</a>
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+
+
         <footer class="mt-100 overflow-hidden footer-style-2">
             <div class="footer-bottom bg-5">
                 <div class="container">
@@ -14,7 +58,7 @@
             </div>
         </footer>
         <!-- footer end -->
-        
+
         <!-- scrollup start -->
         <button id="scrollup">
             <i class="fas fa-chevron-up" style="color:#fff;"></i>
@@ -42,44 +86,19 @@
                             <li class="menu-list-item nav-item">
                                 <a class="nav-link" href="<?php echo BASE_URL; ?>blog">Blog</a>
                             </li>
-                            <li class="menu-list-item nav-item has-dropdown">
-                                <div class="mega-menu-header">
-                                    <a class="nav-link active" href="javascript:void(0);">
-                                        Pages
-                                    </a>
-                                    <span class="open-submenu">
-                                        <i class="fas fa-chevron-down"></i>
-                                    </span>
-                                </div>
-                                <div class="submenu-transform submenu-transform-desktop">
-                                    <div class="offcanvas-header border-btm-black">
-                                        <h5 class="drawer-heading btn-menu-back d-flex align-items-center">
-                                            <i class="fas fa-chevron-left mr_10"></i>
-                                            <span class="menu-back-text">Pages</span>
-                                        </h5>
-                                    </div>
-                                    <ul class="submenu list-unstyled">
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub" href="<?php echo BASE_URL; ?>about-us">About Us</a>
-                                        </li>
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub" href="<?php echo BASE_URL; ?>faq">FAQ</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+
                             <li class="menu-list-item nav-item">
-                                <a class="nav-link" href="<?php echo BASE_URL; ?>contact">Contact</a>
+                                <a class="nav-link" href="<?php echo BASE_URL; ?>contact">Contact Us</a>
                             </li>
                         </ul>
                     </nav>
                     <ul class="utility-menu list-unstyled">
                         <li class="utilty-menu-item">
-                            <a class="announcement-text" href="tel:+8801912721070">
+                            <a class="announcement-text" href="tel:+4253055977">
                                 <span class="utilty-icon-wrapper">
                                     <i class="fas fa-phone"></i>
                                 </span>
-                                Call: +01912000000
+                                (425) 305-5977
                             </a>
                         </li>
                         <li class="utilty-menu-item">
@@ -87,7 +106,7 @@
                                 <span class="utilty-icon-wrapper">
                                     <i class="far fa-user"></i>
                                 </span>
-                                <span>User Login</span>
+                                <span>Login</span>
                             </a>
                         </li>
                     </ul>
@@ -101,59 +120,60 @@
         <script src="<?php echo BASE_URL; ?>dist-front/js/vendor.js"></script>
         <script src="<?php echo BASE_URL; ?>dist-admin/js/iziToast.min.js"></script>
         <script src="<?php echo BASE_URL; ?>dist-front/js/main.js"></script>
-    </div>
+        </div>
 
-    <?php if(isset($error_message)): ?>
-<script>
-iziToast.error({
-    message: '<?php echo $error_message; ?>',
-    position: 'topRight',
-    timeout: 4000,
-    color: 'red',
-    icon: 'fa fa-times',
-});
-</script>
-<?php endif; ?>
-
-
-<?php if(isset($success_message)): ?>
-<script>
-iziToast.success({
-    message: '<?php echo $success_message; ?>',
-    position: 'topRight',
-    timeout: 3000,
-    color: 'green',
-    icon: 'fa fa-check',
-});
-</script>
-<?php endif; ?>
-
-<?php if(isset($_SESSION['success_message'])): ?>
-<script>
-iziToast.success({
-    message: '<?php echo $_SESSION['success_message']; ?>',
-    position: 'topRight',
-    timeout: 3000,
-    color: 'green',
-    icon: 'fa fa-check',
-});
-</script>
-<?php unset($_SESSION['success_message']); ?>
-<?php endif; ?>
+        <?php if (isset($error_message)): ?>
+            <script>
+                iziToast.error({
+                    message: '<?php echo $error_message; ?>',
+                    position: 'topRight',
+                    timeout: 4000,
+                    color: 'red',
+                    icon: 'fa fa-times',
+                });
+            </script>
+        <?php endif; ?>
 
 
-<?php if(isset($_SESSION['error_message'])): ?>
-<script>
-iziToast.success({
-    message: '<?php echo $_SESSION['error_message']; ?>',
-    position: 'topRight',
-    timeout: 3000,
-    color: 'red',
-    icon: 'fa fa-times',
-});
-</script>
-<?php unset($_SESSION['error_message']); ?>
-<?php endif; ?>
+        <?php if (isset($success_message)): ?>
+            <script>
+                iziToast.success({
+                    message: '<?php echo $success_message; ?>',
+                    position: 'topRight',
+                    timeout: 3000,
+                    color: 'green',
+                    icon: 'fa fa-check',
+                });
+            </script>
+        <?php endif; ?>
 
-</body>
-</html>
+        <?php if (isset($_SESSION['success_message'])): ?>
+            <script>
+                iziToast.success({
+                    message: '<?php echo $_SESSION['success_message']; ?>',
+                    position: 'topRight',
+                    timeout: 3000,
+                    color: 'green',
+                    icon: 'fa fa-check',
+                });
+            </script>
+            <?php unset($_SESSION['success_message']); ?>
+        <?php endif; ?>
+
+
+        <?php if (isset($_SESSION['error_message'])): ?>
+            <script>
+                iziToast.success({
+                    message: '<?php echo $_SESSION['error_message']; ?>',
+                    position: 'topRight',
+                    timeout: 3000,
+                    color: 'red',
+                    icon: 'fa fa-times',
+                });
+            </script>
+            <?php unset($_SESSION['error_message']); ?>
+        <?php endif; ?>
+
+        </body>
+
+        </html>

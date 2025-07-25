@@ -30,13 +30,13 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $i=0;
+                                        $i = 0;
                                         $statement = $pdo->prepare("SELECT * FROM coupons");
                                         $statement->execute();
                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                        foreach($result as $row) {
+                                        foreach ($result as $row) {
                                             $i++;
-                                            ?>
+                                        ?>
                                             <tr>
                                                 <td><?php echo $i; ?></td>
                                                 <td><?php echo $row['code']; ?></td>
@@ -47,7 +47,7 @@
                                                 <td><?php echo $row['maximum_use']; ?></td>
                                                 <td>
                                                     <?php
-                                                    if($row['status'] == 'Active') {
+                                                    if ($row['status'] == 'Active') {
                                                         echo '<span class="badge bg-success">Active</span>';
                                                     } else {
                                                         echo '<span class="badge bg-danger">Inactive</span>';
@@ -59,7 +59,7 @@
                                                     <a href="<?php echo ADMIN_URL; ?>coupon-delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
-                                            <?php
+                                        <?php
                                         }
                                         ?>
                                     </tbody>

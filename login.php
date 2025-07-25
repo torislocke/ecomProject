@@ -18,7 +18,7 @@ if(isset($_POST['form_login'])) {
             throw new Exception("Password can not be empty");
         }
 
-        $q = $pdo->prepare("SELECT * FROM customers WHERE email=? AND status=?");
+        $q = $pdo->prepare("SELECT * FROM users WHERE email=? AND status=?");
         $q->execute([$_POST['email'],'Active']);
         $total = $q->rowCount();
         if(!$total) {

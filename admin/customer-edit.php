@@ -1,7 +1,7 @@
 <?php include 'layouts/top.php'; ?>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM customers WHERE id=?");
+$statement = $pdo->prepare("SELECT * FROM users WHERE id=?");
 $statement->execute([$_REQUEST['id']]);
 $result = $statement->fetch(PDO::FETCH_ASSOC);
 $total = $statement->rowCount();
@@ -26,7 +26,7 @@ if(isset($_POST['form1'])) {
             throw new Exception('Email is not valid');
         }
         // duplicate email check
-        $statement = $pdo->prepare("SELECT * FROM customers WHERE email=? AND id!=?");
+        $statement = $pdo->prepare("SELECT * FROM users WHERE email=? AND id!=?");
         $statement->execute([$_POST['email'], $_REQUEST['id']]);
         $total = $statement->rowCount();
         if($total) {
@@ -49,7 +49,7 @@ if(isset($_POST['form1'])) {
             $final_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         }
 
-        $statement = $pdo->prepare("UPDATE customers SET name=?, email=?, phone=?, address=?, password=?, status=? WHERE id=?");
+        $statement = $pdo->prepare("UPDATE users SET name=?, email=?, phone=?, address=?, password=?, status=? WHERE id=?");
         $statement->execute([
             $_POST['name'],
             $_POST['email'],
@@ -75,7 +75,7 @@ if(isset($_POST['form1'])) {
 ?>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM customers WHERE id=?");
+$statement = $pdo->prepare("SELECT * FROM users WHERE id=?");
 $statement->execute([$_REQUEST['id']]);
 $result = $statement->fetch(PDO::FETCH_ASSOC);
 ?>

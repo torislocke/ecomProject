@@ -65,4 +65,4 @@ if(isset($_POST['order_no']) ) {
     </div>
 </main>
 
-<?php include "footer.php"; ?>
+<?php include "footer-online.php"; ?>

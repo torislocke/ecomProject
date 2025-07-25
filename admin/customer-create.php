@@ -1,64 +1,65 @@
 <?php include 'layouts/top.php'; ?>
 
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 ?>
 
 <?php
-if(isset($_POST['form1'])) {
+if (isset($_POST['form1'])) {
     try {
 
-        if($_POST['name'] == '') {
+        if ($_POST['name'] == '') {
             throw new Exception('Name can not be empty');
         }
-        if($_POST['email'] == '') {
+        if ($_POST['email'] == '') {
             throw new Exception('Email can not be empty');
         }
         // email validation check
-        if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             throw new Exception('Email is not valid');
         }
         // duplicate email check
-        $statement = $pdo->prepare("SELECT * FROM customers WHERE email=?");
+        $statement = $pdo->prepare("SELECT * FROM users WHERE email=?");
         $statement->execute([$_POST['email']]);
         $total = $statement->rowCount();
-        if($total) {
+        if ($total) {
             throw new Exception('Email already exists');
         }
-        if($_POST['phone'] == '') {
+        if ($_POST['phone'] == '') {
             throw new Exception('Phone can not be empty');
         }
-        if($_POST['address'] == '') {
+        if ($_POST['address'] == '') {
             throw new Exception('Address can not be empty');
         }
 
-        if($_POST['password'] == '') {
+        if ($_POST['password'] == '') {
             throw new Exception('Password can not be empty');
         }
 
-        if($_POST['confirm_password'] == '') {
+        if ($_POST['confirm_password'] == '') {
             throw new Exception('Confirm Password can not be empty');
         }
 
-        if($_POST['password'] != $_POST['confirm_password']) {
+        if ($_POST['password'] != $_POST['confirm_password']) {
             throw new Exception('Passwords do not match');
         }
 
         $final_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        $statement = $pdo->prepare("INSERT INTO customers (name,email,phone,address,password,token,status) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $statement = $pdo->prepare("INSERT INTO users (name,email,phone,address,password,token,status) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $statement->execute([$_POST['name'], $_POST['email'], $_POST['phone'], $_POST['address'], $final_password, '', $_POST['status']]);
 
         // Send email to the customer
 
-        $email_message = "Dear ".$_POST['name'].",<br><br>";
+        $email_message = "Dear " . $_POST['name'] . ",<br><br>";
         $email_message .= "Your account has been created successfully.<br>";
         $email_message .= "Here are your login details:<br>";
-        $email_message .= "Login URL: <a href='".BASE_URL."login'>".BASE_URL."login</a><br>";
-        $email_message .= "Email: ".$_POST['email']."<br>";
-        $email_message .= "Password: ".$_POST['password']."<br><br>";
+        $email_message .= "Login URL: <a href='" . BASE_URL . "login'>" . BASE_URL . "login</a><br>";
+        $email_message .= "Email: " . $_POST['email'] . "<br>";
+        $email_message .= "Password: " . $_POST['password'] . "<br><br>";
 
         $mail = new PHPMailer(true);
         $mail->isSMTP();
@@ -74,17 +75,15 @@ if(isset($_POST['form1'])) {
         $mail->Subject = 'Your Account is Created';
         $mail->Body = $email_message;
         $mail->send();
-        
+
 
         $_SESSION['success_message'] = 'Customer has been created successfully.';
-        header('location: '.ADMIN_URL.'customer-view.php');
+        header('location: ' . ADMIN_URL . 'customer-view.php');
         exit;
-
-
     } catch (Exception $e) {
         $error_message = $e->getMessage();
         $_SESSION['error_message'] = $error_message;
-        header('location: '.ADMIN_URL.'customer-create.php');
+        header('location: ' . ADMIN_URL . 'customer-create.php');
         exit;
     }
 }

@@ -23,7 +23,7 @@ iframe {
   background-color: #000; }
 
 .bg-3 {
-  background-color: #F76B6A; }
+  background-color: #432222; }
 
 .bg-4 {
   background-color: #071C1F; }
@@ -34,6 +34,9 @@ iframe {
 .bg-pink {
   background-color: #FFF3F3; }
 
+  .bg-tan { 
+    background-color: tan; }
+
 .bg-trust-1 {
   background-color: #FCEDDA; }
 
@@ -42,7 +45,12 @@ iframe {
 
 .bg-trust-3 {
   background-color: #F7D8F9; }
+.faq-section {
+  margin-top: 6rem!important; }
 
+  .faq-inner {
+    margin-top: 2rem!important; 
+  }
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:focus,
@@ -155,7 +163,8 @@ input[type="number"] {
   appearance: none !important; }
 
 input[type="number"] {
-  -moz-appearance: textfield !important; }
+  -moz-appearance: textfield !important; 
+appearance: textfield !important;}
 
 .icon {
   width: 22px;
@@ -570,7 +579,11 @@ button,
   -ms-display: flex;
   -webkit-display: flex;
   display: -webkit-box;
-  display: flex; }
+  display: flex;
+  height: 70px;
+  width: 100px;
+  border-radius: 50%;
+}
 
 .header-top {
   padding: 20px 0; }
@@ -1337,9 +1350,9 @@ button,
 .grid-container-2 {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[12];
+  -ms-grid-columns: repeat(12, 1fr);
   grid-template-columns: repeat(12, 1fr);
-  -ms-grid-rows: (250px)[2];
+  -ms-grid-rows: repeat(2, 250px);
   grid-template-rows: repeat(2, 250px);
   grid-gap: 24px;
   grid-auto-flow: column; }
@@ -1597,7 +1610,14 @@ img.single-banner-img {
 .article-card-img-wrapper {
   position: relative;
   display: block; }
-
+.article-card-img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center; }  
+  
 .article-tag {
   font-size: 13px;
   line-height: 1;
@@ -3271,6 +3291,7 @@ blockquote {
   border-top: 1px solid rgba(255, 255, 255, 0.4);
   padding: 20px 0; }
   .footer-style-2 .footer-bottom {
+    background-color: var(--body-background-color) !important;
     border-top: 1px solid rgba(0, 35, 77, 0.1); }
 
 .footer-bottom-inner {

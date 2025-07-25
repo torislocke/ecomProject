@@ -1,4 +1,4 @@
-<?php include "header.php"; ?>
+<?php include "header-online.php"; ?>
 
 <?php
 if(!isset($_GET['name'])) {
@@ -545,4 +545,4 @@ if(isset($_POST['form_wishlist'])) {
     </div>
 </main>
 
-<?php include "footer.php"; ?>
+<?php include "footer-online.php"; ?>

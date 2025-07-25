@@ -23,9 +23,9 @@ $statement = $pdo->prepare("SELECT * FROM areas");
 $statement->execute();
 $total_areas = $statement->rowCount();
 
-$statement = $pdo->prepare("SELECT * FROM customers WHERE status = ?");
+$statement = $pdo->prepare("SELECT * FROM users WHERE status = ?");
 $statement->execute(['Active']);
-$total_customers = $statement->rowCount();
+$total_users = $statement->rowCount();
 
 $statement = $pdo->prepare("SELECT * FROM orders");
 $statement->execute();
@@ -117,10 +117,10 @@ $total_comments = $statement->rowCount();
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Active Customers</h4>
+                            <h4>Total Active users</h4>
                         </div>
                         <div class="card-body">
-                            <?php echo $total_customers; ?>
+                            <?php echo $total_users; ?>
                         </div>
                     </div>
                 </div>

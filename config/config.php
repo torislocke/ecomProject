@@ -1,6 +1,6 @@
 <?php
 $dbhost = 'localhost';
-$dbname = 'ecommerce_project';
+$dbname = 'ecomproject';
 $dbuser = 'root';
 $dbpass = '';
 try {
@@ -10,7 +10,7 @@ try {
 catch( PDOException $exception ) {
     echo "Connection error :" . $exception->getMessage();
 }
-define("BASE_URL", "http://localhost/ecommerce_project/");
+define("BASE_URL", "http://localhost/ecomProject/");
 define("ADMIN_URL", BASE_URL."admin/");
 
 define("SMTP_HOST", "smtp.gmail.com");

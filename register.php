@@ -22,7 +22,7 @@ if(isset($_POST['form_register'])) {
             throw new Exception("Invalid email format.");
         }
 
-        $statement = $pdo->prepare("SELECT * FROM customers WHERE email=?");
+        $statement = $pdo->prepare("SELECT * FROM users WHERE email=?");
         $statement->execute([$_POST['email']]);
         $total = $statement->rowCount();
         if($total) {
@@ -44,7 +44,7 @@ if(isset($_POST['form_register'])) {
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $token = bin2hex(random_bytes(12));
 
-        $statement = $pdo->prepare("INSERT INTO customers (name, email, password, token, status) VALUES (?, ?, ?, ?, ?)");
+        $statement = $pdo->prepare("INSERT INTO users (name, email, password, token, status) VALUES (?, ?, ?, ?, ?)");
         $statement->execute([$_POST['name'], $_POST['email'], $password, $token, 'Inactive']);
 
         // Send activation email
@@ -108,8 +108,8 @@ if(isset($_POST['form_register'])) {
                 <div class="row">
                     <div class="col-12">
                         <fieldset>
-                            <label class="label">Name</label>
-                            <input type="text" name="name">
+                            <label class="label">Full Name</label>
+                            <input type="text" name="name" placeholder="i.e., Jane Smith">
                         </fieldset>
                     </div>
                     <div class="col-12">

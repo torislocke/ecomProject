@@ -1,58 +1,56 @@
 <?php include 'layouts/top.php'; ?>
 
 <?php
-if(isset($_POST['form1'])) {
+if (isset($_POST['form1'])) {
     try {
 
-        if($_POST['code'] == '') {
+        if ($_POST['code'] == '') {
             throw new Exception('Code cannot be empty');
         }
         // duplicate code check
         $statement = $pdo->prepare("SELECT * FROM coupons WHERE code=?");
         $statement->execute([$_POST['code']]);
         $total = $statement->rowCount();
-        if($total) {
+        if ($total) {
             throw new Exception('Code already exists');
         }
-        if($_POST['discount'] == '') {
+        if ($_POST['discount'] == '') {
             throw new Exception('Discount cannot be empty');
         }
         // Check if discount is numeric
-        if(!is_numeric($_POST['discount'])) {
+        if (!is_numeric($_POST['discount'])) {
             throw new Exception('Discount must be numeric');
         }
-        if($_POST['type'] == '') {
+        if ($_POST['type'] == '') {
             throw new Exception('Type cannot be empty');
         }
-        if($_POST['start_date'] == '') {
+        if ($_POST['start_date'] == '') {
             throw new Exception('Start date cannot be empty');
         }
-        if($_POST['end_date'] == '') {
+        if ($_POST['end_date'] == '') {
             throw new Exception('End date cannot be empty');
         }
-        if($_POST['maximum_use'] == '') {
+        if ($_POST['maximum_use'] == '') {
             throw new Exception('Maximum use cannot be empty');
         }
         // Check if maximum use is numeric
-        if(!is_numeric($_POST['maximum_use'])) {
+        if (!is_numeric($_POST['maximum_use'])) {
             throw new Exception('Maximum use must be numeric');
         }
-        if($_POST['status'] == '') {
+        if ($_POST['status'] == '') {
             throw new Exception('Status cannot be empty');
         }
-        
+
         $statement = $pdo->prepare("INSERT INTO coupons (code, discount, type, start_date, end_date, maximum_use, status) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $statement->execute([$_POST['code'], $_POST['discount'], $_POST['type'], $_POST['start_date'], $_POST['end_date'], $_POST['maximum_use'], $_POST['status']]);
 
         $_SESSION['success_message'] = 'Coupon has been created successfully.';
-        header('location: '.ADMIN_URL.'coupon-view.php');
+        header('location: ' . ADMIN_URL . 'coupon-view.php');
         exit;
-
-
     } catch (Exception $e) {
         $error_message = $e->getMessage();
         $_SESSION['error_message'] = $error_message;
-        header('location: '.ADMIN_URL.'coupon-create.php');
+        header('location: ' . ADMIN_URL . 'coupon-create.php');
         exit;
     }
 }

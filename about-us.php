@@ -67,7 +67,7 @@
                         <img src="<?php echo BASE_URL; ?>dist-front/img/about/p1.jpg" alt="img">
                         <div class="promotional-absolute">
                             <div class="promotional-content text-center">
-                                <h2 class="promo-title">Serve our customers and always deliver the customer service</h2>
+                                <h2 class="promo-title">Serve our users and always deliver the customer service</h2>
                                 <p class="promo-subtitle">We provide a full range of front end mechanical repairs for all makes and models of cars, no matter the cause. This includes</p>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                         <img src="<?php echo BASE_URL; ?>dist-front/img/about/p3.jpg" alt="img">
                         <div class="promotional-absolute">
                             <div class="promotional-content text-center">
-                                <h2 class="promo-title">We value the service we provide and our loyal returning customers </h2>
+                                <h2 class="promo-title">We value the service we provide and our loyal returning users </h2>
                                 <p class="promo-subtitle">We provide a full range of front end mechanical repairs for all makes and models of cars, no matter the cause. This includes</p>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
         <div class="about-service pt-100">
             <div class="container">
                 <div class="section-header about-service-header text-center">
-                    <h2 class="section-heading">Services we provide to our valued customers</h2>
+                    <h2 class="section-heading">Services we provide to our valued users</h2>
                 </div>
                 <div class="about-service-wrapper">
                     <div class="row justify-content-center">

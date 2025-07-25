@@ -1,7 +1,7 @@
 <?php include "header.php"; ?>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM customers WHERE email=? AND token=?");
+$statement = $pdo->prepare("SELECT * FROM users WHERE email=? AND token=?");
 $statement->execute([$_REQUEST['email'],$_REQUEST['token']]);
 $total = $statement->rowCount();
 if(!$total) {
@@ -24,7 +24,7 @@ if(isset($_POST['form_reset_password'])) {
 
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        $statement = $pdo->prepare("UPDATE customers SET token=?, password=? WHERE email=? AND token=?");
+        $statement = $pdo->prepare("UPDATE users SET token=?, password=? WHERE email=? AND token=?");
         $statement->execute(['',$password,$_REQUEST['email'],$_REQUEST['token']]);
 
         $_SESSION['success_message'] = 'Password has been reset successfully. You can now login with your new password.';

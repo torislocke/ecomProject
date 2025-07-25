@@ -26,6 +26,20 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `admins`
 --
+CREATE TABLE coffee_types (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE coffee_variants (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    coffee_id INT NOT NULL,
+    size VARCHAR(50) NOT NULL,       -- e.g., '12-ounce bag'
+    price DECIMAL(6,2) NOT NULL,     -- adjust for precision as needed
+    FOREIGN KEY (coffee_id) REFERENCES coffee_types(id)
+);
+
+ALTER TABLE coffee_types ADD COLUMN image_path VARCHAR(255);
 
 CREATE TABLE `admins` (
   `id` int NOT NULL,
@@ -43,7 +57,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `photo`, `password`, `token`, `role`, `status`) VALUES
-(1, 'Ryan ', 'admin@example.com', '1696430317.jpg', '$2y$10$ZWxErZpXCc8M34cN57tA.OD0b/n/w5CjCZITFXtoObQ3xMkkiiPL6', '', 'admin', 1);
+(1, 'Tori Admin ', 'tbos@mail.com', '1696430317.jpg', '$2y$10$ZWxErZpXCc8M34cN57tA.OD0b/n/w5CjCZITFXtoObQ3xMkkiiPL6', '', 'admin', 2);
 
 
 -- --------------------------------------------------------
@@ -122,10 +136,10 @@ INSERT INTO `coupons` (`id`, `code`, `discount`, `type`, `start_date`, `end_date
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `customers` (
+CREATE TABLE `users` (
   `id` int NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -134,13 +148,14 @@ CREATE TABLE `customers` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `customers`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `customers` (`id`, `name`, `email`, `phone`, `address`, `password`, `token`, `status`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `address`, `password`, `token`, `status`) VALUES
 (1, 'Mister John', 'john@example.com', '+1 (777) 777-7777', '33, Test Street, Test City, USA', '$2y$10$QKcd.02K9u/2OrVnQ.0rUORzJJOzgshQFpGvGNm7vu2aiw/7fpgsu', '', 'Active'),
 (2, 'Smith Cooper', 'smith@example.com', '+1 (666) 666-6666', '44, Test Street, Test City, USA', '$2y$10$a7/5ojhXCu2v0cDyk/U2qunVG6aRIsulE7zqa.4t6mLZdxBWXOvS.', '', 'Active'),
 (3, 'Knox Downs', 'knox@example.com', '+1 (555) 555-5555', '22, Test Street, Test City, USA', '$2y$10$WKf4TIRI1IT9e4a0zksk2u1QEx.eEPMb4M1bkWCdJAWDKcaI4HtzC', '', 'Inactive'),
@@ -558,9 +573,9 @@ ALTER TABLE `coupons`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `customers`
+-- Indexes for table `users`
 --
-ALTER TABLE `customers`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -676,9 +691,9 @@ ALTER TABLE `coupons`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `customers`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `customers`
+ALTER TABLE `users`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --

@@ -3,7 +3,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header justify-content-between">
-            <h1>Customers</h1>
+            <h1>users</h1>
             <div class="ml-auto">
                 <a href="<?php echo ADMIN_URL; ?>customer-create.php" class="btn btn-primary"><i class="fas fa-plus"></i> Add New</a>
             </div>
@@ -29,7 +29,7 @@
                                     <tbody>
                                         <?php
                                         $i=0;
-                                        $statement = $pdo->prepare("SELECT * FROM customers ORDER BY name ASC");
+                                        $statement = $pdo->prepare("SELECT * FROM users ORDER BY name ASC");
                                         $statement->execute();
                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                         foreach($result as $row) {
